@@ -1,17 +1,7 @@
-pip install numpy
-pip install Pillow
-pip install Keras
-pip install tensorflow
-pip install Flask
-pip install Werkzeug
-pip install gunicorn
-
-python 3.8 (64 bit)
-
-install Visual C++  
-  
-Link - https://support.microsoft.com/en-us/topic/the-latest-supported-visual-c-downloads-2647da03-1eea-4433-9aff-95f26a218cc0
-        dowmload--- x64: vc_redist.x64.exe
-
-
-https://support.microsoft.com/en-us/topic/the-latest-supported-visual-c-downloads-2647da03-1eea-4433-9aff-95f26a218cc0
+Flask==3.0.3
+Werkzeug==3.0.3
+gunicorn==22.0.0
+numpy==1.26.4
+Pillow==10.4.0
+tensorflow==2.17.0
+Keras==3.4.1
