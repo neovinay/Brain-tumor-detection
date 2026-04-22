@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <title>Brain Tumour Detection - Signup</title>
+  <!-- Same CSS as login -->
+  <link href="../static/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <!-- etc, copy from login -->
+  <link href="../static/css/styles.css" rel="stylesheet">
+</head>
+<body>
+  <!-- Header same as login -->
+  <header>...</header> <!-- copy from login -->
+
+  <section id="services">
+    <div class="container">
+      <h2>Signup</h2>
+<div class="col-md-6 mx-auto">
+        <form id="signupForm" method="POST" action="/register">
+          <input type="hidden" name="uname" value="">
+          <input type="hidden" name="pwd" value="">
+          <div class="control-group">
+            <label><b>Username</b></label>
+            <input type="text" id="uname" name="uname" class="form-control" required>
+          </div>
+          <br>
+          <div class="control-group">
+            <label><b>Password</b></label>
+            <input type="password" id="pwd" name="pwd" class="form-control" required>
+          </div>
+          <br>
+<div class="d-flex justify-content-center mt-3"><button type="submit" class="btn btn-success">Signup</button></div>
+        </form>
+        <p>Already have account? <a href="/login">Login</a></p>
+      </div>
+    </div>
+  </section>
+
+  <script>
+    document.getElementById('signupForm').addEventListener('submit', function(e) {
+      // Client validation if needed
+    });
+  </script>
+
+  <!-- Vendor JS same -->
+</body>
+</html>
