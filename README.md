@@ -103,51 +103,38 @@ MPIP06/
 
 ## Deployment Guide
 
-### Option 1: Render.com (Free Tier, Recommended - 5min)
-1. **Push to GitHub:**
-   - Create repo, commit all files (`.gitignore`: venv/, __pycache__/).
-   - `git init; git add .; git commit -m "Initial"; gh repo create brain-tumor-app --public`
+### 🚀 Recommended: Railway.app (ML-Friendly, 1min Deploy)
+1. Go to https://railway.app → Login with GitHub.
+2. **New Project** → Deploy from GitHub → `neovinay/Brain-tumor-detection`.
+3. Auto-detects Python/Flask/TF:
+   - Build: `pip install -r requirements.txt`
+   - Start: `gunicorn app_fixed:app`
+4. **Instant live URL** (e.g., https://brain-tumor-detection.up.railway.app)!
 
-2. **Deploy on Render:**
-   - Sign up: https://render.com
-   - New → Web Service → Connect GitHub repo
-   - Settings:
-     | Field | Value |
-     |-------|-------|
-     | Name | brain-tumor-app |
-     | Environment | Python 3 |
-     | Region | Oregon (free) |
-     | Branch | main |
-     | Build Command | `pip install -r requirements.txt` |
-     | Start Command | `gunicorn app_fixed:app` |
-   - Deploy → Live URL in 2min!
+**Why Railway?** Handles TensorFlow/Python issues automatically, free tier generous for ML.
 
-3. **Custom Domain (Optional):** Add via Render dashboard.
+### Alternative: Render.com (Free)
+1. https://render.com → New Web Service → Connect repo `neovinay/Brain-tumor-detection`.
+2. Settings:
+   | Field | Value |
+   |-------|-------|
+   | Build | `pip install -r requirements.txt` |
+   | Start | `gunicorn app_fixed:app` |
+3. Manual Deploy → Live!
 
-### Option 2: Heroku (CLI)
-1. **Install Heroku CLI:** https://devcenter.heroku.com/articles/heroku-cli
-2. **Procfile:** Create `Procfile` (no ext):
-   ```
-   web: gunicorn app_fixed:app
-   ```
-3. **requirements.txt:** Ensure `gunicorn` present (already is).
-4. **Deploy:**
-   ```
-   heroku create brain-tumor-app
-   git push heroku main
-   heroku open
-   ```
-   - Free dyno: Sleeps after 30min idle.
-
-### Option 3: Railway.app (GitHub → Deploy)
-- Similar to Render, auto-detects Python/Flask.
+### Heroku (CLI)
+```
+heroku create brain-tumor-app
+git push heroku main
+```
 
 **Notes:**
-- Model `save.h5` uploads with repo (~100MB ok).
-- In-memory users reset on restart → Use Redis/DB for prod.
-- Free tiers: Render/Heroku (1GB RAM sufficient).
+- `save.h5` (~100MB) uploads fine.
+- Prod: Add DB for users.
+- Free tiers sufficient.
 
-**Live Demo Command (after deploy):** Share your Render/Heroku URL!
+**Your Repo:** https://github.com/neovinay/Brain-tumor-detection (ready-to-deploy)
+
 
 ## Future Improvements
 - Persistent DB (SQLite/Flask-Login)
