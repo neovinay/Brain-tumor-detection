@@ -101,9 +101,56 @@ MPIP06/
 
 **Cleanup Suggestion:** Delete duplicate CSS (styl.css, sty.css → use styles.css).
 
+## Deployment Guide
+
+### Option 1: Render.com (Free Tier, Recommended - 5min)
+1. **Push to GitHub:**
+   - Create repo, commit all files (`.gitignore`: venv/, __pycache__/).
+   - `git init; git add .; git commit -m "Initial"; gh repo create brain-tumor-app --public`
+
+2. **Deploy on Render:**
+   - Sign up: https://render.com
+   - New → Web Service → Connect GitHub repo
+   - Settings:
+     | Field | Value |
+     |-------|-------|
+     | Name | brain-tumor-app |
+     | Environment | Python 3 |
+     | Region | Oregon (free) |
+     | Branch | main |
+     | Build Command | `pip install -r requirements.txt` |
+     | Start Command | `gunicorn app_fixed:app` |
+   - Deploy → Live URL in 2min!
+
+3. **Custom Domain (Optional):** Add via Render dashboard.
+
+### Option 2: Heroku (CLI)
+1. **Install Heroku CLI:** https://devcenter.heroku.com/articles/heroku-cli
+2. **Procfile:** Create `Procfile` (no ext):
+   ```
+   web: gunicorn app_fixed:app
+   ```
+3. **requirements.txt:** Ensure `gunicorn` present (already is).
+4. **Deploy:**
+   ```
+   heroku create brain-tumor-app
+   git push heroku main
+   heroku open
+   ```
+   - Free dyno: Sleeps after 30min idle.
+
+### Option 3: Railway.app (GitHub → Deploy)
+- Similar to Render, auto-detects Python/Flask.
+
+**Notes:**
+- Model `save.h5` uploads with repo (~100MB ok).
+- In-memory users reset on restart → Use Redis/DB for prod.
+- Free tiers: Render/Heroku (1GB RAM sufficient).
+
+**Live Demo Command (after deploy):** Share your Render/Heroku URL!
+
 ## Future Improvements
 - Persistent DB (SQLite/Flask-Login)
-- Deployment (Heroku/Render)
 - Multi-model support
 - API endpoints (JSON predict)
 - Mobile-responsive enhancements
@@ -114,4 +161,5 @@ MIT - Feel free to use/modify!
 ---
 
 *Built with ❤️ for early detection awareness.*
+
 
