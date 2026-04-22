@@ -1,7 +1,6 @@
-Flask==2.3.3
-Werkzeug==2.3.7
-gunicorn==21.2.0
-numpy==1.24.4
-Pillow==10.0.1
-tensorflow==2.13.0
-Keras==2.13.1
+flask
+gunicorn
+numpy
+Pillow
+tensorflow==2.10.0
+Werkzeug
